@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Friends Finder</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+   
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <style>
+        body{
+            font-family: "Rubik", sans-serif;
+        }
+        .qno{
+            font-weight: 100;
+        }
+        .statement{
+            font-weight: 700;
+        }
+        .radio{
+            float: left;
+            padding: 10px;
+        }
+
+        .question{
+            padding: 20px;
+            width: 100%;
+        }
+
+        .paranthes{
+            font-size: 14px;
+            margin: 0 30px; 
+        }
+        .radio-group{
+            display: inline-block;
+            margin: 0px 25px;
+        }
+        #friend-text{
+            float: right;
+            width:50%;
+        }
+
+        #friend-img{
+            margin-right: 20px;
+            margin-bottom: 30px;
+            float: left;
+            width: 40%;
+            max-width: 200px;
+        }
+        #friend-name{
+            display: block;
+            width:100%;
+        }
+
+        #about-div h4{
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .container{
+            padding-top: 50px;
+        }
+        #submit-div{
+            width:100%;
+            margin: 0px 40% 50px 40%;
+        }
+        #about{
+            font-weight: 100;
+            margin-bottom: 40px;
+        }
+        #name{
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class= "container">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div id="header">
+                <h1> Take a moment to answer these questions:</h1>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div id="about-div" class="col-md-4">
+                    <div class="question">
+                            <h3 id="about">About you:</h3>
+                            <h4>Name*</h4>
+                            <input id="name" class="form-control" type="text" required>
+                            <h4>Link to Profile Image*</h4>
+                            <input id="imgUrl" class="form-control" type="text" required>
+                    </div>
+                </div>
+                
+                <div class="col-md-8" id="questions">
+                    
+                </div>
+                <div id="submit-div">
+                        <button id="submit-btn" data-toggle="modal" data-target="#friendModal" class="btn btn-dark">Submit</button>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div id="formModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Please answer to all questions!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay!</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div id="friendModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4>Best match</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                  <img class="friend-modal-content" id="friend-img">
+                  <div id="friend-text">
+                    <h1 class="friend-modal-content" id="friend-name"></h1>
+                    <p class="" id="more-friends"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                 
+                  <a href="/survey"><button type="button" class="btn btn-secondary">Retry</button></a>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+
+
+
+
+    <script>
+
+        var allQuestions= {
+            question1: "Helvetica is the best typeface ever designed!",
+            question2: "I use only a few typefaces",
+            question3: "If you don't know what ligature is you're not a graphic designer",
+            question4: "The best two colors are black & white!",
+            question5: "Vectors first, then pixels",
+            question6: "Indesign is the king of adobe software",
+            question7: "Fonts should never be free",
+            question8: "I always follow the rules of typography",
+            question9: "Paper first, then screen",
+            question10: "I can't live without grid"
+        }
+        
+
+        for (var i =1; i<11; i++){
+            var questionDiv = $('<div class="question">')
+            var headline = $("<h4 class='statement'><span class='qno'>" + i + ") </span>" + allQuestions["question"+i] + "</h4>")
+            var optionsFrom = $("<div class='radio-group'>") 
+            
+            for(var j =1; j<6; j++){
+                var optionId= i + "-" +j;
+                var radioDiv = $("<div class='radio'>")
+                var input = $('<label id="' + optionId + '"><input type="radio" name="q' + i +'" value="'+ j + '"> '+ j + '</label>');
+                radioDiv.append(input);
+                optionsFrom.append(radioDiv);
+            }
+            questionDiv.append(headline);
+            questionDiv.append("<p class='paranthes'>(1: Strongly disagree, 5: Strongly agree)</p>")
+            questionDiv.append(optionsFrom);
+            $("#questions").append(questionDiv);
+            $("#questions").append("<hr>");
+        }
+
+        $("#submit-btn").on("click", function() {
+            event.preventDefault();
+            
+            var username = $("#name").val().trim();
+            var imgUrl = $("#imgUrl").val().trim();
+            var newScores = [];
+            for (var i =1; i<11; i++){
+                var question= "q"+i;
+                newScores.push($("input[name="+ question+"]:checked").val() || "x");
+            }
+            
+            if(newScores.indexOf("x")!= -1 || username==="" || imgUrl ===""){
+                formModal();
+            }else{
+                clearformModal();
+                var newUser = {
+                Name: username,
+                Image: imgUrl,
+                Scores: newScores,
+                }
+                $.post("/api/friends", newUser)
+                .then(function(data){
+                    var myScore = countItems(newUser.Scores);
+                    var allUsers= data;
+                    for (var i=0; i < allUsers.length; i++){
+                        allUsers[i].scoreDiff = Math.abs(myScore - countItems(allUsers[i].Scores));
+                    }
+
+
+                    allUsers.sort(function(a, b) {
+                        if (a.scoreDiff < b.scoreDiff) return -1;
+                        else if (a.scoreDiff > b.scoreDiff) return 1;
+                        return 0;
+                    });
+
+                    console.log(allUsers)
+                    var friendName = allUsers[0].Name.toUpperCase();
+                    var friendImg = allUsers[0].Image;
+                    $("#friend-img").attr("src", friendImg);
+                    $("#friend-name").text(friendName);
+
+                    var friend2Name = allUsers[1].Name.toUpperCase();
+                    var friend3Name = allUsers[2].Name.toUpperCase();
+                    $("#more-friends").text("You also probably get along with " +friend2Name+" and "+friend3Name)
+                    // console.log(data);
+
+                });
+
+            }
+            
+        })
+
+
+        function formModal(){
+            $('#submit-btn').attr("data-target", "#formModal")
+        }
+        function clearformModal(){
+            $('#submit-btn').attr("data-target", "#friendModal")
+        }
+
+        function countItems(array){
+            var scoreSum= parseInt(array[0]);
+            for(var i=1; i<array.length; i++){
+                scoreSum += parseInt(array[i])
+            }
+            return scoreSum;
+        }
+
+
+    </script>
+</body>
+
+
+
+</html>

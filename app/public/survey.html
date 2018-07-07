@@ -15,14 +15,26 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <style>
-        body{
+        *{
             font-family: "Rubik", sans-serif;
+        }
+        #header h1{
+            color: #01295F;
+            font-size: 36px;
+        }
+        #header{   
+            font-family: "anton", sans-serif;
+            max-width: 60%;
         }
         .qno{
             font-weight: 100;
         }
+    
         .statement{
             font-weight: 700;
+            color: #2274A5;
+            text-indent: -1em;
+
         }
         .radio{
             float: left;
@@ -36,11 +48,9 @@
 
         .paranthes{
             font-size: 14px;
-            margin: 0 30px; 
         }
         .radio-group{
             display: inline-block;
-            margin: 0px 25px;
         }
         #friend-text{
             float: right;
@@ -60,6 +70,7 @@
         }
 
         #about-div h4{
+            color: #01295F;
             font-weight: 700;
             font-size: 17px;
         }
@@ -71,12 +82,20 @@
             margin: 0px 40% 50px 40%;
         }
         #about{
+            color: #01295F;
             font-weight: 100;
             margin-bottom: 40px;
         }
         #name{
             margin-bottom: 20px;
         }
+
+        hr.first{
+            border: 0;
+            border-bottom: 1px dashed #01295F;
+            margin-bottom: 2%;
+            margin-right: 50%;
+    }
     </style>
 
 
@@ -84,79 +103,83 @@
 
 <body>
     <div class= "container">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div id="header">
-                <h1> Take a moment to answer these questions:</h1>
-            </div>
-            <hr>
+        <div class="row">
+            <div class="col-md-0 col-sm-0"></div>
+            <div class="col-md-12 col-sm-12">
+                <div id="header">
+                    <h1>Answer these questions and find your typomate!</h1>
+                </div>
+                <hr class="first">
 
-            <div class="row">
-                <div id="about-div" class="col-md-4">
-                    <div class="question">
-                            <h3 id="about">About you:</h3>
-                            <h4>Name*</h4>
-                            <input id="name" class="form-control" type="text" required>
-                            <h4>Link to Profile Image*</h4>
-                            <input id="imgUrl" class="form-control" type="text" required>
+                <div class="row">
+                    <div id="about-div" class="col-md-4">
+                        <div class="question">
+                                <h3 id="about">About you:</h3>
+                                <h4>Name*</h4>
+                                <input id="name" class="form-control" type="text" required>
+                                <h4>Link to Profile Image*</h4>
+                                <input id="imgUrl" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8" id="questions">
+                        
+                    </div>
+                    <div id="submit-div">
+                            <button id="submit-btn" data-toggle="modal" data-target="#friendModal" class="btn btn-dark">Submit</button>
                     </div>
                 </div>
                 
-                <div class="col-md-8" id="questions">
-                    
+            </div>
+            <div class="col-md-0 col-sm-0"></div>
+        </div>
+
+        <div class="row modal-row">
+            <div id="formModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    Please answer to all questions!
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay!</button>
+                    </div>
                 </div>
-                <div id="submit-div">
-                        <button id="submit-btn" data-toggle="modal" data-target="#friendModal" class="btn btn-dark">Submit</button>
                 </div>
             </div>
             
-        </div>
-
-
-        <div id="formModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+            <div id="friendModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h4>Best match</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    
+                    <img class="friend-modal-content" id="friend-img">
+                    <div id="friend-text">
+                        <h1 class="friend-modal-content" id="friend-name"></h1>
+                        <p class="" id="more-friends"></p>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                    
+                    <a href="/survey"><button type="button" class="btn btn-secondary">Retry</button></a>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  Please answer to all questions!
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay!</button>
-                </div>
-              </div>
             </div>
         </div>
+
         
-        <div id="friendModal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4>Best match</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  
-                  <img class="friend-modal-content" id="friend-img">
-                  <div id="friend-text">
-                    <h1 class="friend-modal-content" id="friend-name"></h1>
-                    <p class="" id="more-friends"></p>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                 
-                  <a href="/survey"><button type="button" class="btn btn-secondary">Retry</button></a>
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <div class="col-md-1"></div>
     </div>
 
 
